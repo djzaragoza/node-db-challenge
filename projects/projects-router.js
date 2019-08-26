@@ -43,3 +43,24 @@ router.get('/:id/resources', async (req, res) => {
     }
 });
 
+// adding a resource
+
+router.get('/:id/tasks', async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const tasks = await
+        db.getTasks(id);
+        if (tasks) {
+            res.status(200).json({ success: true, tasks });
+        } else {
+            res.status(404).json({ success: false, error: `Could not find project with id ${id} `});
+        }
+    }   catch(err) {
+            res.status(500).json({ success: false, error: 'There was an error while retrieving the tasks '});
+    }
+});
+
+// adding a task 
+
+module.exports = router;

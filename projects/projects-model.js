@@ -34,3 +34,14 @@ function addProject(project) {
         .then(ids => ids[0]);
 };
 
+function addResource(resource) {
+    return db('')
+        .insert(resource)
+        .then(ids => ids[0]);
+};
+
+function addTask(task) {
+    return db('tasks')
+        .insert(task)
+        .then(ids => ids[0]);
+};
